@@ -5,7 +5,7 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "localhost:3004",
+  "host": "172.17.13.134:3004",
   "basePath": "/",
   "schemes": [
     "http"
@@ -14,14 +14,14 @@
     "/gateway/api/account-service/v1/student-login": {
       "post": {
         "tags": [
-          "STUDENT"
+          "Student"
         ],
         "description": "",
         "parameters": [
           {
             "name": "obj",
             "in": "body",
-            "description": "User data.",
+            "description": "Student data",
             "required": true,
             "schema": {
               "type": "object",
@@ -44,7 +44,7 @@
     "/gateway/api/account-service/v1/user-login": {
       "post": {
         "tags": [
-          "STUDENT"
+          "User"
         ],
         "description": "",
         "parameters": [
@@ -73,15 +73,13 @@
     },
     "/gateway/api/account-service/v1/change-pass": {
       "post": {
-        "tags": [
-          "STUDENT"
-        ],
+        "tags": [],
         "description": "",
         "parameters": [
           {
             "name": "obj",
             "in": "body",
-            "description": "User data.",
+            "description": "Student data",
             "required": true,
             "schema": {
               "type": "object",
@@ -103,15 +101,13 @@
     },
     "/gateway/api/account-service/v1/refresh-token": {
       "get": {
-        "tags": [
-          "STUDENT"
-        ],
+        "tags": [],
         "description": "",
         "parameters": [
           {
             "name": "obj",
             "in": "body",
-            "description": "User data.",
+            "description": "Student data",
             "required": true,
             "schema": {
               "type": "object",
@@ -133,59 +129,46 @@
     },
     "/gateway/api/course-service/v1/course/get-all": {
       "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "type": "string"
-          }
+        "tags": [
+          "Course"
         ],
+        "description": "This endpoint return a list of all course",
+        "parameters": [],
         "responses": {}
       }
     },
     "/gateway/api/course-service/v1/course/get-all-deleted": {
       "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "type": "string"
-          }
+        "tags": [
+          "Course"
         ],
+        "description": "This endpoint return a list of all course",
+        "parameters": [],
         "responses": {}
       }
     },
     "/gateway/api/course-service/v1/course/get/{courseId}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Course"
+        ],
+        "description": "This endpoint return detail information of an inputed courseId",
         "parameters": [
           {
             "name": "courseId",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "type": "string"
+            "type": "string",
+            "description": "Id of a course",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "courseId": {
+                  "type": "string",
+                  "example": "12345"
+                }
+              }
+            }
           }
         ],
         "responses": {}
@@ -193,22 +176,15 @@
     },
     "/gateway/api/course-service/v1/course/delete/{courseId}": {
       "delete": {
-        "description": "",
+        "tags": [
+          "Course"
+        ],
+        "description": "This endpoint return a list of all course",
         "parameters": [
           {
             "name": "courseId",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
             "type": "string"
           }
         ],
@@ -217,22 +193,15 @@
     },
     "/gateway/api/course-service/v1/course/delete/{courseId}/force": {
       "delete": {
-        "description": "",
+        "tags": [
+          "Course"
+        ],
+        "description": "This endpoint return a list of all course",
         "parameters": [
           {
             "name": "courseId",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
             "type": "string"
           }
         ],
@@ -241,22 +210,15 @@
     },
     "/gateway/api/course-service/v1/course/restore/{courseId}": {
       "put": {
-        "description": "",
+        "tags": [
+          "Course"
+        ],
+        "description": "This endpoint return a list of all course",
         "parameters": [
           {
             "name": "courseId",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
             "type": "string"
           }
         ],
@@ -265,7 +227,10 @@
     },
     "/gateway/api/course-service/v1/course/new": {
       "post": {
-        "description": "",
+        "tags": [
+          "Course"
+        ],
+        "description": "This endpoint return a list of all course",
         "parameters": [
           {
             "name": "body",
@@ -285,30 +250,70 @@
     },
     "/gateway/api/course-service/v1/academic/get": {
       "get": {
-        "description": "",
-        "parameters": [],
+        "tags": [
+          "Academic"
+        ],
+        "description": "This endpoint return a list of all course",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "query",
+            "description": "Academic data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "studentId": {
+                  "type": "string",
+                  "example": "12314"
+                },
+                "semesterAlias": {
+                  "type": "string",
+                  "example": "HK1-2023-2024"
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     },
     "/gateway/api/course-service/v1/academic/get-all": {
       "get": {
-        "description": "",
+        "tags": [
+          "Academic"
+        ],
+        "description": "This endpoint return a list of all course",
         "parameters": [],
         "responses": {}
       }
     },
     "/gateway/api/course-service/v1/academic/new": {
       "post": {
+        "tags": [
+          "Academic"
+        ],
         "description": "",
         "parameters": [
           {
-            "name": "body",
+            "name": "obj",
             "in": "body",
+            "description": "Academic data",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "studentId": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "12314"
+                },
+                "courseCode": {
+                  "type": "string",
+                  "example": "123123123123"
+                },
+                "semesterAlias": {
+                  "type": "string",
+                  "example": "HK1-2023-2024"
                 }
               }
             }
@@ -319,23 +324,26 @@
     },
     "/gateway/api/course-service/v1/academic/get-academic-statistics/{alias}": {
       "get": {
+        "tags": [
+          "Academic"
+        ],
         "description": "",
         "parameters": [
           {
             "name": "alias",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "type": "string"
+            "type": "string",
+            "description": "Alias of semester.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "alias": {
+                  "type": "string",
+                  "example": "HK1-2023-2024"
+                }
+              }
+            }
           }
         ],
         "responses": {}
@@ -343,58 +351,35 @@
     },
     "/gateway/api/course-service/v1/semester/get-all": {
       "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "type": "string"
-          }
+        "tags": [
+          "Semester"
         ],
+        "description": "This endpoint return a list of all semester",
+        "parameters": [],
         "responses": {}
       }
     },
     "/gateway/api/course-service/v1/semester/get-all-deleted": {
       "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "type": "string"
-          }
+        "tags": [
+          "Semester"
         ],
+        "description": "This endpoint return a list of all course",
+        "parameters": [],
         "responses": {}
       }
     },
     "/gateway/api/course-service/v1/semester/get/{alias}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Semester"
+        ],
+        "description": "This endpoint return detail information of an alias",
         "parameters": [
           {
             "name": "alias",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
             "type": "string"
           }
         ],
@@ -403,22 +388,15 @@
     },
     "/gateway/api/course-service/v1/semester/get/delete/{alias}/force": {
       "get": {
-        "description": "",
+        "tags": [
+          "Semester"
+        ],
+        "description": "This endpoint return a list of all course",
         "parameters": [
           {
             "name": "alias",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
             "type": "string"
           }
         ],
@@ -427,22 +405,15 @@
     },
     "/gateway/api/course-service/v1/semester/get-academic-statistics/{alias}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Semester"
+        ],
+        "description": "This endpoint return a list of all course",
         "parameters": [
           {
             "name": "alias",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
             "type": "string"
           }
         ],
@@ -451,22 +422,15 @@
     },
     "/gateway/api/course-service/v1/semester/restore/{alias}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Semester"
+        ],
+        "description": "This endpoint return a list of all course",
         "parameters": [
           {
             "name": "alias",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
             "type": "string"
           }
         ],
@@ -475,40 +439,25 @@
     },
     "/gateway/api/course-service/v1/semester/new": {
       "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "type": "string"
-          }
+        "tags": [
+          "Semester"
         ],
+        "description": "This endpoint return a list of all course",
+        "parameters": [],
         "responses": {}
       }
     },
     "/gateway/api/user-service/v1/test/upload/{id_user}": {
       "post": {
+        "tags": [
+          "Test"
+        ],
         "description": "",
         "parameters": [
           {
             "name": "id_user",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
             "type": "string"
           }
         ],
@@ -517,22 +466,15 @@
     },
     "/gateway/api/user-service/v1/student/get/{id_student}": {
       "get": {
+        "tags": [
+          "Student"
+        ],
         "description": "",
         "parameters": [
           {
             "name": "id_student",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
             "type": "string"
           }
         ],
@@ -541,35 +483,50 @@
     },
     "/gateway/api/user-service/v1/student/student/get-all": {
       "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "type": "string"
-          }
+        "tags": [
+          "Student"
         ],
+        "description": "",
+        "parameters": [],
         "responses": {}
       }
     },
     "/gateway/api/user-service/v1/student/new": {
       "post": {
+        "tags": [
+          "Student"
+        ],
         "description": "",
         "parameters": [
           {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "type": "string"
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fullName": {
+                  "type": "string",
+                  "example": "fullName"
+                },
+                "gender": {
+                  "type": "number",
+                  "example": 1
+                },
+                "id_class": {
+                  "type": "string",
+                  "example": "class"
+                },
+                "id_faculty": {
+                  "type": "string",
+                  "example": "faculty"
+                },
+                "course_year": {
+                  "type": "number",
+                  "example": 20
+                }
+              }
+            }
           }
         ],
         "responses": {}
@@ -577,22 +534,15 @@
     },
     "/gateway/api/user-service/v1/student/{id_student}": {
       "patch": {
+        "tags": [
+          "Student"
+        ],
         "description": "",
         "parameters": [
           {
             "name": "id_student",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
             "type": "string"
           }
         ],
@@ -601,22 +551,15 @@
     },
     "/gateway/api/user-service/v1/class/get/{id_class}": {
       "get": {
+        "tags": [
+          "Class"
+        ],
         "description": "",
         "parameters": [
           {
             "name": "id_class",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
             "type": "string"
           }
         ],
@@ -625,13 +568,38 @@
     },
     "/gateway/api/user-service/v1/class/new": {
       "post": {
+        "tags": [
+          "Class"
+        ],
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "course_year": {
+                  "type": "string",
+                  "example": "20"
+                },
+                "id_faculty": {
+                  "type": "string",
+                  "example": "7693478"
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     },
     "/gateway/api/user-service/v1/class/get-all": {
       "get": {
+        "tags": [
+          "Class"
+        ],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -639,6 +607,9 @@
     },
     "/gateway/api/user-service/v1/class/{id_class}": {
       "patch": {
+        "tags": [
+          "Class"
+        ],
         "description": "",
         "parameters": [
           {
@@ -653,6 +624,9 @@
     },
     "/gateway/api/user-service/v1/user/get/{id_user}": {
       "get": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -667,6 +641,9 @@
     },
     "/gateway/api/user-service/v1/user/get-all": {
       "get": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -674,13 +651,46 @@
     },
     "/gateway/api/user-service/v1/user/new": {
       "post": {
+        "tags": [
+          "User"
+        ],
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fullName": {
+                  "type": "string",
+                  "example": "fullName"
+                },
+                "gender": {
+                  "type": "number",
+                  "example": 1
+                },
+                "id_faculty": {
+                  "type": "string",
+                  "example": "faculty"
+                },
+                "role": {
+                  "type": "string",
+                  "example": "Student, FACULTY IT, ADMIN"
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     },
     "/gateway/api/user-service/v1/user/{id_user}": {
       "patch": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -695,7 +705,10 @@
     },
     "/gateway/api/user-service/v1/faculty/get/{id_faculty}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Faculty"
+        ],
+        "description": "This endpoint return detail information of an inputed faculty id",
         "parameters": [
           {
             "name": "id_faculty",
@@ -709,20 +722,44 @@
     },
     "/gateway/api/user-service/v1/faculty/get-all": {
       "get": {
-        "description": "",
+        "tags": [
+          "Faculty"
+        ],
+        "description": "This endpoint return a list of all faculty",
         "parameters": [],
         "responses": {}
       }
     },
     "/gateway/api/user-service/v1/faculty/new": {
       "post": {
+        "tags": [
+          "Faculty"
+        ],
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "faculty_name": {
+                  "type": "string",
+                  "example": "Faculty name"
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     },
     "/gateway/api/user-service/v1/score/get/{id_student}": {
       "get": {
+        "tags": [
+          "Score"
+        ],
         "description": "",
         "parameters": [
           {
@@ -737,6 +774,9 @@
     },
     "/gateway/api/user-service/v1/score/get/{id_student}/{id_course}": {
       "get": {
+        "tags": [
+          "Score"
+        ],
         "description": "",
         "parameters": [
           {
@@ -757,6 +797,9 @@
     },
     "/gateway/api/user-service/v1/score/new": {
       "post": {
+        "tags": [
+          "Score"
+        ],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -764,6 +807,9 @@
     },
     "/gateway/api/user-service/v1/score/update-score": {
       "patch": {
+        "tags": [
+          "Score"
+        ],
         "description": "",
         "parameters": [],
         "responses": {}

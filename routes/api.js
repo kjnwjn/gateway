@@ -2,7 +2,7 @@ const router = require("express").Router();
 var httpProxy = require("express-http-proxy");
 const jsonResponse = require("../utils/jsonResponse");
 const axios = require("axios");
-const authentication = require("../middleware/authentication");
+// cons = require("../middlewar");
 const courseService = httpProxy(`${process.env.COURSE_SERVICE}`);
 const clientService = httpProxy(`${process.env.CLIENT_SERVICE}`);
 const accountService = httpProxy(`${process.env.ACCOUNT_SERVICE}`);
@@ -10,10 +10,10 @@ const accountService = httpProxy(`${process.env.ACCOUNT_SERVICE}`);
 /*----------------------*/
 router.post("/api/account-service/v1/student-login", (req, res, next) => {
     /*
-        #swagger.tags = ['STUDENT']
+        #swagger.tags = ['Student']
         #swagger.parameters['obj'] = {
             in: 'body',
-            description: 'User data.',
+            description: 'Student data',
             required: true,
             schema: {
                 username: "user",
@@ -26,14 +26,32 @@ router.post("/api/account-service/v1/student-login", (req, res, next) => {
 });
 
 router.post("/api/account-service/v1/user-login", (req, res, next) => {
+    /*
+        #swagger.tags = ['User']
+        #swagger.parameters['obj'] = {
+            in: 'body',
+            description: 'User data.',
+            required: true,
+            schema: {
+                username: "user",
+                password: "1234"
+            }
+        }
+    */
     accountService(req, res, next);
 });
 
 router.post("/api/account-service/v1/change-pass", (req, res, next) => {
+    /* 
+        ##swagger.tags = ['default]
+    */
     accountService(req, res, next);
 });
 
 router.get("/api/account-service/v1/refresh-token", (req, res, next) => {
+    /* 
+        ##swagger.tags = ['default]
+    */
     accountService(req, res, next);
 });
 /*===================================================================================== */
@@ -43,24 +61,42 @@ router.get("/api/account-service/v1/refresh-token", (req, res, next) => {
 /*----------------------*/
 /*COURSE*/
 
-router.get("/api/course-service/v1/course/get-all", authentication, (req, res, next) => {
+router.get("/api/course-service/v1/course/get-all", (req, res, next) => {
+    /* 
+        #swagger.tags = ['Course']
+        #swagger.description = 'This endpoint return a list of all course'
+    */
     courseService(req, res, next);
 });
 
-router.get("/api/course-service/v1/course/get-all-deleted", authentication, (req, res, next) => {
+router.get("/api/course-service/v1/course/get-all-deleted", (req, res, next) => {
+    //  #swagger.tags = ['Course']
     courseService(req, res, next);
 });
-router.get("/api/course-service/v1/course/get/:courseId", authentication, (req, res, next) => {
+router.get("/api/course-service/v1/course/get/:courseId", (req, res, next) => {
+    /*
+        #swagger.tags = ['Course']
+        #swagger.description = 'This endpoint return detail information of an inputed courseId'
+        #swagger.parameters['courseId'] = {
+            in: 'path',
+            description: 'Id of a course',
+            required: true,
+            schema: {
+                courseId: '12345'
+            }
+        }
+        
+    */
     courseService(req, res, next);
 });
 
-router.delete("/api/course-service/v1/course/delete/:courseId", authentication, (req, res, next) => {
+router.delete("/api/course-service/v1/course/delete/:courseId", (req, res, next) => {
     courseService(req, res, next);
 });
-router.delete("/api/course-service/v1/course/delete/:courseId/force", authentication, (req, res, next) => {
+router.delete("/api/course-service/v1/course/delete/:courseId/force", (req, res, next) => {
     courseService(req, res, next);
 });
-router.put("/api/course-service/v1/course/restore/:courseId", authentication, (req, res, next) => {
+router.put("/api/course-service/v1/course/restore/:courseId", (req, res, next) => {
     courseService(req, res, next);
 });
 
@@ -84,13 +120,42 @@ router.post("/api/course-service/v1/course/new", async (req, res, next) => {
 /*----------------------*/
 /*ACADEMIC*/
 router.get("/api/course-service/v1/academic/get", (req, res, next) => {
+    /*
+        #swagger.tags = ['Academic']
+        #swagger.parameters['obj'] = {
+            in: 'query',
+            description: 'Academic data',
+            required: true,
+            schema: {
+                studentId: '12314',
+                semesterAlias: 'HK1-2023-2024'
+            }
+        }
+    */
     courseService(req, res, next);
 });
 router.get("/api/course-service/v1/academic/get-all", (req, res, next) => {
+    /*
+        #swagger.tags = ['Academic']
+    */
     courseService(req, res, next);
 });
 
 router.post("/api/course-service/v1/academic/new", async (req, res, next) => {
+    /*
+        #swagger.tags = ['Academic']
+        #swagger.description = ''
+        #swagger.parameters['obj'] = {
+            in: 'body',
+            description: 'Academic data',
+            required: true,
+            schema: {
+                studentId: '12314',
+                courseCode: '123123123123',
+                semesterAlias: 'HK1-2023-2024'
+            }
+        }
+    */
     try {
         const id_student = req.body.studentId || null;
         if (!id_student) {
@@ -105,32 +170,67 @@ router.post("/api/course-service/v1/academic/new", async (req, res, next) => {
         next(err);
     }
 });
-router.get("/api/course-service/v1/academic/get-academic-statistics/:alias", authentication, (req, res, next) => {
+router.get("/api/course-service/v1/academic/get-academic-statistics/:alias", (req, res, next) => {
+    /*
+        #swagger.tags = ['Academic']
+        #swagger.description = ''
+        #swagger.parameters['alias'] = {
+            in: 'path',
+            description: 'Alias of semester.',
+            required: true,
+            schema: {
+                alias: 'HK1-2023-2024'
+            }
+        }        
+    */
     courseService(req, res, next);
 });
 /*----------------------*/
 
 /*----------------------*/
 /*SEMESTER*/
-router.get("/api/course-service/v1/semester/get-all", authentication, (req, res, next) => {
+router.get("/api/course-service/v1/semester/get-all", (req, res, next) => {
+    /*
+        #swagger.tags = ['Semester']
+        #swagger.description = 'This endpoint return a list of all semester'
+    */
     courseService(req, res, next);
 });
-router.get("/api/course-service/v1/semester/get-all-deleted", authentication, (req, res, next) => {
+router.get("/api/course-service/v1/semester/get-all-deleted", (req, res, next) => {
+    /*
+        #swagger.tags = ['Semester']
+    */
     courseService(req, res, next);
 });
-router.get("/api/course-service/v1/semester/get/:alias", authentication, (req, res, next) => {
+router.get("/api/course-service/v1/semester/get/:alias", (req, res, next) => {
+    /*
+        #swagger.tags = ['Semester']
+        #swagger.description = 'This endpoint return detail information of an alias'
+    */
     courseService(req, res, next);
 });
-router.get("/api/course-service/v1/semester/get/delete/:alias/force", authentication, (req, res, next) => {
+router.get("/api/course-service/v1/semester/get/delete/:alias/force", (req, res, next) => {
+    /*
+        #swagger.tags = ['Semester']
+    */
     courseService(req, res, next);
 });
-router.get("/api/course-service/v1/semester/get-academic-statistics/:alias", authentication, (req, res, next) => {
+router.get("/api/course-service/v1/semester/get-academic-statistics/:alias", (req, res, next) => {
+    /*
+        #swagger.tags = ['Semester']
+    */
     courseService(req, res, next);
 });
-router.get("/api/course-service/v1/semester/restore/:alias", authentication, (req, res, next) => {
+router.get("/api/course-service/v1/semester/restore/:alias", (req, res, next) => {
+    /*
+        #swagger.tags = ['Semester']
+    */
     courseService(req, res, next);
 });
-router.post("/api/course-service/v1/semester/new", authentication, (req, res, next) => {
+router.post("/api/course-service/v1/semester/new", (req, res, next) => {
+    /*
+        #swagger.tags = ['Semester']
+    */
     courseService(req, res, next);
 });
 /*===================================================================================== */
@@ -140,43 +240,89 @@ router.post("/api/course-service/v1/semester/new", authentication, (req, res, ne
 //CLIENT SERVICE
 /*----------------------*/
 /*UPLOAD AVATAR*/
-router.post("/api/user-service/v1/test/upload/:id_user", authentication, (req, res, next) => {
+router.post("/api/user-service/v1/test/upload/:id_user", (req, res, next) => {
+    /*
+        #swagger.tags = ['Test']
+    */
     clientService(req, res, next);
 });
 /*----------------------*/
 
 /*STUDENT*/
 
-router.get("/api/user-service/v1/student/get/:id_student", authentication, (req, res, next) => {
+router.get("/api/user-service/v1/student/get/:id_student", (req, res, next) => {
+    /*
+        #swagger.tags = ['Student']
+    */
     clientService(req, res, next);
 });
 
-router.get("/api/user-service/v1/student/student/get-all", authentication, (req, res, next) => {
+router.get("/api/user-service/v1/student/student/get-all", (req, res, next) => {
+    /*
+        #swagger.tags = ['Student']
+    */
     clientService(req, res, next);
 });
-router.post("/api/user-service/v1/student/new", authentication, (req, res, next) => {
+router.post("/api/user-service/v1/student/new", (req, res, next) => {
+    /*
+        #swagger.tags = ['Student']
+        #swagger.parameters['obj'] = {
+            in: 'body',
+            required: true,
+            schema: {
+                fullName: 'fullName',
+                gender: 1,
+                id_class: 'class',
+                id_faculty: 'faculty',
+                course_year: 20 
+            }
+        }
+    */
     clientService(req, res, next);
 });
-router.patch("/api/user-service/v1/student/:id_student", authentication, (req, res, next) => {
+router.patch("/api/user-service/v1/student/:id_student", (req, res, next) => {
+    /*
+        #swagger.tags = ['Student']
+    */
     clientService(req, res, next);
 });
 /*----------------------*/
 
 /*----------------------*/
 /*CLASS*/
-router.get("/api/user-service/v1/class/get/:id_class", authentication, (req, res, next) => {
+router.get("/api/user-service/v1/class/get/:id_class", (req, res, next) => {
+    /*
+        #swagger.tags = ['Class']
+    */
     clientService(req, res, next);
 });
 
 router.post("/api/user-service/v1/class/new", (req, res, next) => {
+    /*
+        #swagger.tags = ['Class']
+        #swagger.parameters['obj'] = {
+            in: 'body',
+            required: true,
+            schema: {
+                course_year: '20',
+                id_faculty: '7693478'
+            }
+        }
+    */
     clientService(req, res, next);
 });
 
 router.get("/api/user-service/v1/class/get-all", (req, res, next) => {
+    /*
+        #swagger.tags = ['Class']
+    */
     clientService(req, res, next);
 });
 
 router.patch("/api/user-service/v1/class/:id_class", (req, res, next) => {
+    /*
+        #swagger.tags = ['Class']
+    */
     clientService(req, res, next);
 });
 /*----------------------*/
@@ -185,32 +331,72 @@ router.patch("/api/user-service/v1/class/:id_class", (req, res, next) => {
 /*USER*/
 
 router.get("/api/user-service/v1/user/get/:id_user", (req, res, next) => {
+    /*
+        #swagger.tags = ['User']
+    */
     clientService(req, res, next);
 });
 
 router.get("/api/user-service/v1/user/get-all", (req, res, next) => {
+    /*
+        #swagger.tags = ['User']
+    */
     clientService(req, res, next);
 });
 router.post("/api/user-service/v1/user/new", (req, res, next) => {
+    /*
+        #swagger.tags = ['User']
+        #swagger.parameters['obj'] = {
+            in: 'body',
+            required: true,
+            schema: {
+                fullName: 'fullName',
+                gender: 1,
+                id_faculty: 'faculty',
+                role: "Student, FACULTY IT, ADMIN"
+            }
+        }
+    */
     clientService(req, res, next);
 });
 
 router.patch("/api/user-service/v1/user/:id_user", (req, res, next) => {
+    /*
+        #swagger.tags = ['User']
+    */
     clientService(req, res, next);
 });
 /*----------------------*/
 
 /*----------------------*/
-/*FACULTy*/
+/*FACULTY*/
 
 router.get("/api/user-service/v1/faculty/get/:id_faculty", (req, res, next) => {
+    /*
+        #swagger.tags = ['Faculty']
+        #swagger.description = 'This endpoint return detail information of an inputed faculty id'
+    */
     clientService(req, res, next);
 });
 
 router.get("/api/user-service/v1/faculty/get-all", (req, res, next) => {
+    /*
+        #swagger.tags = ['Faculty']
+        #swagger.description = 'This endpoint return a list of all faculty'
+    */
     clientService(req, res, next);
 });
 router.post("/api/user-service/v1/faculty/new", (req, res, next) => {
+    /*
+        #swagger.tags = ['Faculty']
+        #swagger.parameters['obj'] = {
+            in: 'body',
+            required: true,
+            schema: {
+                faculty_name: 'Faculty name'
+            }
+        }
+    */
     clientService(req, res, next);
 });
 /*----------------------*/
@@ -219,17 +405,29 @@ router.post("/api/user-service/v1/faculty/new", (req, res, next) => {
 /*SCORE*/
 
 router.get("/api/user-service/v1/score/get/:id_student", (req, res, next) => {
+    /*
+        #swagger.tags = ['Score']
+    */
     clientService(req, res, next);
 });
 
 router.get("/api/user-service/v1/score/get/:id_student/:id_course", (req, res, next) => {
+    /*
+        #swagger.tags = ['Score']
+    */
     clientService(req, res, next);
 });
 router.post("/api/user-service/v1/score/new", (req, res, next) => {
+    /*
+        #swagger.tags = ['Score']
+    */
     clientService(req, res, next);
 });
 
 router.patch("/api/user-service/v1/score/update-score", (req, res, next) => {
+    /*
+        #swagger.tags = ['Score']
+    */
     clientService(req, res, next);
 });
 
