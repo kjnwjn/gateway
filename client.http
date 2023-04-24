@@ -1,0 +1,22 @@
+###
+POST http://localhost:3004/gateway/api/course-service/v1/course/new?api_key=wGlWnNDcrU0K4zOF8ywGl HTTP/1.1
+content-type: application/json
+
+{
+    "code": 3219891092397321,
+    "name":"Subject F",
+    "credits": 12,
+    "description": "This is a description of the subject ABC",
+    "prerequisite": ["643e2d1357b93e5a82ddc838"],
+    "departmentAllowed": "216257"
+}
+
+###
+POST http://localhost:3004/gateway/api/course-service/v1/academic/new?api_key=wGlWnNDcrU0K4zOF8ywGl HTTP/1.1
+content-type: application/json
+
+{
+    "studentId":"19065533",
+    "courseCode":"3219891092397321",
+    "semesterAlias":"HK2-2023-2024"
+}
