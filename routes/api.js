@@ -185,6 +185,10 @@ router.get("/api/course-service/v1/academic/get-academic-statistics/:alias", (re
     */
     courseService(req, res, next);
 });
+
+router.get("/api/course-service/v1/academic/remove", (req, res, next) => {
+    courseService(req, res, next);
+});
 /*----------------------*/
 
 /*----------------------*/
@@ -209,6 +213,13 @@ router.get("/api/course-service/v1/semester/get/:alias", (req, res, next) => {
     */
     courseService(req, res, next);
 });
+router.patch("/api/course-service/v1/semester/:alias", (req, res, next) => {
+    /*
+        #swagger.tags = ['Semester']
+        #swagger.description = 'update status of semester'
+    */
+    courseService(req, res, next);
+});
 router.get("/api/course-service/v1/semester/get/delete/:alias/force", (req, res, next) => {
     /*
         #swagger.tags = ['Semester']
@@ -230,6 +241,53 @@ router.get("/api/course-service/v1/semester/restore/:alias", (req, res, next) =>
 router.post("/api/course-service/v1/semester/new", (req, res, next) => {
     /*
         #swagger.tags = ['Semester']
+    */
+    courseService(req, res, next);
+});
+
+/*----------------------*/
+
+/*----------------------*/
+/*SCHEDULE*/
+router.get("/api/course-service/v1/schedule/", (req, res, next) => {
+    /*
+        #swagger.tags = ['schedule']
+    */
+    courseService(req, res, next);
+});
+router.post("/api/course-service/v1/schedule/all", (req, res, next) => {
+    /*
+        #swagger.tags = ['schedule']
+    */
+    courseService(req, res, next);
+});
+router.post("/api/course-service/v1/schedule/new", (req, res, next) => {
+    /*
+        #swagger.tags = ['schedule']
+    */
+    courseService(req, res, next);
+});
+router.post("/api/course-service/v1/schedule/enroll", (req, res, next) => {
+    /*
+        #swagger.tags = ['schedule']
+    */
+    courseService(req, res, next);
+});
+router.delete("/api/course-service/v1/schedule/delete-enroll", (req, res, next) => {
+    /*
+        #swagger.tags = ['schedule']
+    */
+    courseService(req, res, next);
+});
+router.post("/api/course-service/v1/schedule/enrollment/all", (req, res, next) => {
+    /*
+        #swagger.tags = ['schedule']
+    */
+    courseService(req, res, next);
+});
+router.post("/api/course-service/v1/schedule/enrollment/semester", (req, res, next) => {
+    /*
+        #swagger.tags = ['schedule']
     */
     courseService(req, res, next);
 });

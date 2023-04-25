@@ -349,6 +349,16 @@
         "responses": {}
       }
     },
+    "/gateway/api/course-service/v1/academic/remove": {
+      "get": {
+        "tags": [
+          "Course"
+        ],
+        "description": "This endpoint return a list of all course",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/gateway/api/course-service/v1/semester/get-all": {
       "get": {
         "tags": [
@@ -375,6 +385,23 @@
           "Semester"
         ],
         "description": "This endpoint return detail information of an alias",
+        "parameters": [
+          {
+            "name": "alias",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/gateway/api/course-service/v1/semester/{alias}": {
+      "patch": {
+        "tags": [
+          "Semester"
+        ],
+        "description": "update status of semester",
         "parameters": [
           {
             "name": "alias",
@@ -441,6 +468,76 @@
       "post": {
         "tags": [
           "Semester"
+        ],
+        "description": "This endpoint return a list of all course",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/gateway/api/course-service/v1/schedule/": {
+      "get": {
+        "tags": [
+          "schedule"
+        ],
+        "description": "This endpoint return a list of all course",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/gateway/api/course-service/v1/schedule/all": {
+      "post": {
+        "tags": [
+          "schedule"
+        ],
+        "description": "This endpoint return a list of all course",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/gateway/api/course-service/v1/schedule/new": {
+      "post": {
+        "tags": [
+          "schedule"
+        ],
+        "description": "This endpoint return a list of all course",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/gateway/api/course-service/v1/schedule/enroll": {
+      "post": {
+        "tags": [
+          "schedule"
+        ],
+        "description": "This endpoint return a list of all course",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/gateway/api/course-service/v1/schedule/delete-enroll": {
+      "delete": {
+        "tags": [
+          "schedule"
+        ],
+        "description": "This endpoint return a list of all course",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/gateway/api/course-service/v1/schedule/enrollment/all": {
+      "post": {
+        "tags": [
+          "schedule"
+        ],
+        "description": "This endpoint return a list of all course",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/gateway/api/course-service/v1/schedule/enrollment/semester": {
+      "post": {
+        "tags": [
+          "schedule"
         ],
         "description": "This endpoint return a list of all course",
         "parameters": [],
