@@ -106,7 +106,7 @@ router.post("/api/course-service/v1/course/new", async (req, res, next) => {
         if (!id_faculty) {
             return jsonResponse({ req, res }).json({ message: `Faculty Id is required!` });
         }
-        const facultyQuery = await axios.get(`${process.env.ClIENT_SERVICE}/api/user-service/v1/faculty/get/${id_faculty}`);
+        const facultyQuery = await axios.get(`${process.env.ClIENT_SERVICE}/api/client-service/v1/faculty/get/${id_faculty}`);
 
         courseService(req, res, next);
     } catch (error) {
@@ -161,7 +161,7 @@ router.post("/api/course-service/v1/academic/new", async (req, res, next) => {
         if (!id_student) {
             return jsonResponse({ req, res }).json({ message: `Student Id is required!` });
         }
-        const studentQuery = await axios.get(`${process.env.ClIENT_SERVICE}/api/user-service/v1/student/get/${id_student}`);
+        const studentQuery = await axios.get(`${process.env.ClIENT_SERVICE}/api/client-service/v1/student/get/${id_student}`);
 
         courseService(req, res, next);
     } catch (error) {
@@ -240,7 +240,7 @@ router.post("/api/course-service/v1/semester/new", (req, res, next) => {
 //CLIENT SERVICE
 /*----------------------*/
 /*UPLOAD AVATAR*/
-router.post("/api/user-service/v1/test/upload/:id_user", (req, res, next) => {
+router.post("/api/client-service/v1/test/upload/:id_user", (req, res, next) => {
     /*
         #swagger.tags = ['Test']
     */
@@ -250,20 +250,20 @@ router.post("/api/user-service/v1/test/upload/:id_user", (req, res, next) => {
 
 /*STUDENT*/
 
-router.get("/api/user-service/v1/student/get/:id_student", (req, res, next) => {
+router.get("/api/client-service/v1/student/get/:id_student", (req, res, next) => {
     /*
         #swagger.tags = ['Student']
     */
     clientService(req, res, next);
 });
 
-router.get("/api/user-service/v1/student/student/get-all", (req, res, next) => {
+router.get("/api/client-service/v1/student/student/get-all", (req, res, next) => {
     /*
         #swagger.tags = ['Student']
     */
     clientService(req, res, next);
 });
-router.post("/api/user-service/v1/student/new", (req, res, next) => {
+router.post("/api/client-service/v1/student/new", (req, res, next) => {
     /*
         #swagger.tags = ['Student']
         #swagger.parameters['obj'] = {
@@ -280,7 +280,7 @@ router.post("/api/user-service/v1/student/new", (req, res, next) => {
     */
     clientService(req, res, next);
 });
-router.patch("/api/user-service/v1/student/:id_student", (req, res, next) => {
+router.patch("/api/client-service/v1/student/:id_student", (req, res, next) => {
     /*
         #swagger.tags = ['Student']
     */
@@ -290,14 +290,14 @@ router.patch("/api/user-service/v1/student/:id_student", (req, res, next) => {
 
 /*----------------------*/
 /*CLASS*/
-router.get("/api/user-service/v1/class/get/:id_class", (req, res, next) => {
+router.get("/api/client-service/v1/class/get/:id_class", (req, res, next) => {
     /*
         #swagger.tags = ['Class']
     */
     clientService(req, res, next);
 });
 
-router.post("/api/user-service/v1/class/new", (req, res, next) => {
+router.post("/api/client-service/v1/class/new", (req, res, next) => {
     /*
         #swagger.tags = ['Class']
         #swagger.parameters['obj'] = {
@@ -312,14 +312,14 @@ router.post("/api/user-service/v1/class/new", (req, res, next) => {
     clientService(req, res, next);
 });
 
-router.get("/api/user-service/v1/class/get-all", (req, res, next) => {
+router.get("/api/client-service/v1/class/get-all", (req, res, next) => {
     /*
         #swagger.tags = ['Class']
     */
     clientService(req, res, next);
 });
 
-router.patch("/api/user-service/v1/class/:id_class", (req, res, next) => {
+router.patch("/api/client-service/v1/class/:id_class", (req, res, next) => {
     /*
         #swagger.tags = ['Class']
     */
@@ -330,20 +330,20 @@ router.patch("/api/user-service/v1/class/:id_class", (req, res, next) => {
 /*----------------------*/
 /*USER*/
 
-router.get("/api/user-service/v1/user/get/:id_user", (req, res, next) => {
+router.get("/api/client-service/v1/user/get/:id_user", (req, res, next) => {
     /*
         #swagger.tags = ['User']
     */
     clientService(req, res, next);
 });
 
-router.get("/api/user-service/v1/user/get-all", (req, res, next) => {
+router.get("/api/client-service/v1/user/get-all", (req, res, next) => {
     /*
         #swagger.tags = ['User']
     */
     clientService(req, res, next);
 });
-router.post("/api/user-service/v1/user/new", (req, res, next) => {
+router.post("/api/client-service/v1/user/new", (req, res, next) => {
     /*
         #swagger.tags = ['User']
         #swagger.parameters['obj'] = {
@@ -360,7 +360,7 @@ router.post("/api/user-service/v1/user/new", (req, res, next) => {
     clientService(req, res, next);
 });
 
-router.patch("/api/user-service/v1/user/:id_user", (req, res, next) => {
+router.patch("/api/client-service/v1/user/:id_user", (req, res, next) => {
     /*
         #swagger.tags = ['User']
     */
@@ -371,7 +371,7 @@ router.patch("/api/user-service/v1/user/:id_user", (req, res, next) => {
 /*----------------------*/
 /*FACULTY*/
 
-router.get("/api/user-service/v1/faculty/get/:id_faculty", (req, res, next) => {
+router.get("/api/client-service/v1/faculty/get/:id_faculty", (req, res, next) => {
     /*
         #swagger.tags = ['Faculty']
         #swagger.description = 'This endpoint return detail information of an inputed faculty id'
@@ -379,14 +379,14 @@ router.get("/api/user-service/v1/faculty/get/:id_faculty", (req, res, next) => {
     clientService(req, res, next);
 });
 
-router.get("/api/user-service/v1/faculty/get-all", (req, res, next) => {
+router.get("/api/client-service/v1/faculty/get-all", (req, res, next) => {
     /*
         #swagger.tags = ['Faculty']
         #swagger.description = 'This endpoint return a list of all faculty'
     */
     clientService(req, res, next);
 });
-router.post("/api/user-service/v1/faculty/new", (req, res, next) => {
+router.post("/api/client-service/v1/faculty/new", (req, res, next) => {
     /*
         #swagger.tags = ['Faculty']
         #swagger.parameters['obj'] = {
@@ -404,27 +404,27 @@ router.post("/api/user-service/v1/faculty/new", (req, res, next) => {
 /*----------------------*/
 /*SCORE*/
 
-router.get("/api/user-service/v1/score/get/:id_student", (req, res, next) => {
+router.get("/api/client-service/v1/score/get/:id_student", (req, res, next) => {
     /*
         #swagger.tags = ['Score']
     */
     clientService(req, res, next);
 });
 
-router.get("/api/user-service/v1/score/get/:id_student/:id_course", (req, res, next) => {
+router.get("/api/client-service/v1/score/get/:id_student/:id_course", (req, res, next) => {
     /*
         #swagger.tags = ['Score']
     */
     clientService(req, res, next);
 });
-router.post("/api/user-service/v1/score/new", (req, res, next) => {
+router.post("/api/client-service/v1/score/new", (req, res, next) => {
     /*
         #swagger.tags = ['Score']
     */
     clientService(req, res, next);
 });
 
-router.patch("/api/user-service/v1/score/update-score", (req, res, next) => {
+router.patch("/api/client-service/v1/score/update-score", (req, res, next) => {
     /*
         #swagger.tags = ['Score']
     */

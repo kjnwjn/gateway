@@ -1,6 +1,6 @@
 require("dotenv").config();
 const ip = require("ip");
-const cors = require('cors')
+const cors = require("cors");
 const http = require("http");
 const express = require("express");
 const createError = require("http-errors");
@@ -13,9 +13,9 @@ const port = normalizePort(process.env.PORT || 3000);
 const debug = require("debug")("server");
 const swaggerAutogen = require("swagger-autogen");
 var corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-  }
+    origin: "*",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
