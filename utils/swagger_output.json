@@ -5,7 +5,7 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "172.17.13.193:3004",
+  "host": "192.168.170.87:3004",
   "basePath": "/",
   "schemes": [
     "http"
@@ -21,18 +21,17 @@
           {
             "name": "obj",
             "in": "body",
-            "description": "Student data",
             "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "username": {
                   "type": "string",
-                  "example": "user"
+                  "example": ""
                 },
                 "password": {
                   "type": "string",
-                  "example": "1234"
+                  "example": ""
                 }
               }
             }
@@ -51,21 +50,21 @@
           {
             "name": "obj",
             "in": "body",
-            "description": "User data.",
             "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "username": {
                   "type": "string",
-                  "example": "user"
+                  "example": ""
                 },
                 "password": {
                   "type": "string",
-                  "example": "1234"
+                  "example": ""
                 }
               }
-            }
+            },
+            "description": "User data"
           }
         ],
         "responses": {}
@@ -73,24 +72,29 @@
     },
     "/gateway/api/account-service/v1/change-pass": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Account"
+        ],
         "description": "",
         "parameters": [
           {
             "name": "obj",
             "in": "body",
-            "description": "Student data",
             "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "username": {
                   "type": "string",
-                  "example": "user"
+                  "example": ""
                 },
-                "password": {
+                "oldPassword": {
                   "type": "string",
-                  "example": "1234"
+                  "example": ""
+                },
+                "newPassword": {
+                  "type": "string",
+                  "example": ""
                 }
               }
             }
@@ -101,24 +105,25 @@
     },
     "/gateway/api/account-service/v1/refresh-token": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Student"
+        ],
         "description": "",
         "parameters": [
           {
             "name": "obj",
             "in": "body",
-            "description": "Student data",
             "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "username": {
                   "type": "string",
-                  "example": "user"
+                  "example": ""
                 },
                 "password": {
                   "type": "string",
-                  "example": "1234"
+                  "example": ""
                 }
               }
             }
@@ -132,7 +137,7 @@
         "tags": [
           "Course"
         ],
-        "description": "This endpoint return a list of all course",
+        "description": "",
         "parameters": [],
         "responses": {}
       }
@@ -142,7 +147,7 @@
         "tags": [
           "Course"
         ],
-        "description": "This endpoint return a list of all course",
+        "description": "",
         "parameters": [],
         "responses": {}
       }
@@ -152,14 +157,13 @@
         "tags": [
           "Course"
         ],
-        "description": "This endpoint return detail information of an inputed courseId",
+        "description": "",
         "parameters": [
           {
             "name": "courseId",
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "Id of a course",
             "schema": {
               "type": "object",
               "properties": {
@@ -179,7 +183,7 @@
         "tags": [
           "Course"
         ],
-        "description": "This endpoint return a list of all course",
+        "description": "",
         "parameters": [
           {
             "name": "courseId",
@@ -196,7 +200,7 @@
         "tags": [
           "Course"
         ],
-        "description": "This endpoint return a list of all course",
+        "description": "",
         "parameters": [
           {
             "name": "courseId",
@@ -213,7 +217,7 @@
         "tags": [
           "Course"
         ],
-        "description": "This endpoint return a list of all course",
+        "description": "",
         "parameters": [
           {
             "name": "courseId",
@@ -230,7 +234,7 @@
         "tags": [
           "Course"
         ],
-        "description": "This endpoint return a list of all course",
+        "description": "",
         "parameters": [
           {
             "name": "body",
@@ -238,6 +242,24 @@
             "schema": {
               "type": "object",
               "properties": {
+                "code": {
+                  "example": "any"
+                },
+                "name": {
+                  "example": "any"
+                },
+                "credits": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "prerequisite": {
+                  "example": "any"
+                },
+                "timeAllocation": {
+                  "example": "any"
+                },
                 "departmentAllowed": {
                   "example": "any"
                 }
@@ -253,12 +275,12 @@
         "tags": [
           "Academic"
         ],
-        "description": "This endpoint return a list of all course",
+        "description": "",
         "parameters": [
           {
-            "name": "obj",
+            "name": "studentId",
             "in": "query",
-            "description": "Academic data",
+            "description": "Id student",
             "required": true,
             "schema": {
               "type": "object",
@@ -266,25 +288,26 @@
                 "studentId": {
                   "type": "string",
                   "example": "12314"
-                },
+                }
+              }
+            }
+          },
+          {
+            "name": "semesterAlias",
+            "in": "query",
+            "description": "Semester ",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
                 "semesterAlias": {
                   "type": "string",
-                  "example": "HK1-2023-2024"
+                  "example": "12314"
                 }
               }
             }
           }
         ],
-        "responses": {}
-      }
-    },
-    "/gateway/api/course-service/v1/academic/get-all": {
-      "get": {
-        "tags": [
-          "Academic"
-        ],
-        "description": "This endpoint return a list of all course",
-        "parameters": [],
         "responses": {}
       }
     },
@@ -322,7 +345,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/course-service/v1/academic/get-academic-statistics/{alias}": {
+    "/gateway/api/course-service/v1/academic/statistics/{alias}": {
       "get": {
         "tags": [
           "Academic"
@@ -350,12 +373,35 @@
       }
     },
     "/gateway/api/course-service/v1/academic/remove": {
-      "get": {
+      "delete": {
         "tags": [
-          "Course"
+          "Academic"
         ],
-        "description": "This endpoint return a list of all course",
-        "parameters": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "studentId": {
+                  "type": "string",
+                  "example": ""
+                },
+                "courseCode": {
+                  "type": "number",
+                  "example": 1
+                },
+                "semesterAlias": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     },
@@ -374,7 +420,7 @@
         "tags": [
           "Semester"
         ],
-        "description": "This endpoint return a list of all course",
+        "description": "",
         "parameters": [],
         "responses": {}
       }
@@ -401,7 +447,7 @@
         "tags": [
           "Semester"
         ],
-        "description": "update status of semester",
+        "description": "Update status of semester",
         "parameters": [
           {
             "name": "alias",
@@ -413,12 +459,12 @@
         "responses": {}
       }
     },
-    "/gateway/api/course-service/v1/semester/get/delete/{alias}/force": {
-      "get": {
+    "/gateway/api/course-service/v1/semester/delete/{alias}": {
+      "delete": {
         "tags": [
           "Semester"
         ],
-        "description": "This endpoint return a list of all course",
+        "description": "",
         "parameters": [
           {
             "name": "alias",
@@ -430,12 +476,12 @@
         "responses": {}
       }
     },
-    "/gateway/api/course-service/v1/semester/get-academic-statistics/{alias}": {
-      "get": {
+    "/gateway/api/course-service/v1/semester/delete/{alias}/force": {
+      "delete": {
         "tags": [
           "Semester"
         ],
-        "description": "This endpoint return a list of all course",
+        "description": "",
         "parameters": [
           {
             "name": "alias",
@@ -448,11 +494,11 @@
       }
     },
     "/gateway/api/course-service/v1/semester/restore/{alias}": {
-      "get": {
+      "put": {
         "tags": [
           "Semester"
         ],
-        "description": "This endpoint return a list of all course",
+        "description": "",
         "parameters": [
           {
             "name": "alias",
@@ -469,78 +515,239 @@
         "tags": [
           "Semester"
         ],
-        "description": "This endpoint return a list of all course",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/gateway/api/course-service/v1/schedule/": {
-      "get": {
-        "tags": [
-          "schedule"
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "alias": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
         ],
-        "description": "This endpoint return a list of all course",
-        "parameters": [],
         "responses": {}
       }
     },
     "/gateway/api/course-service/v1/schedule/all": {
       "post": {
         "tags": [
-          "schedule"
+          "Schedule"
         ],
-        "description": "This endpoint return a list of all course",
-        "parameters": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "semesterAlias": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     },
     "/gateway/api/course-service/v1/schedule/new": {
       "post": {
         "tags": [
-          "schedule"
+          "Schedule"
         ],
-        "description": "This endpoint return a list of all course",
-        "parameters": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "courseCode": {
+                  "type": "number",
+                  "example": 432
+                },
+                "semesterAlias": {
+                  "type": "string",
+                  "example": ""
+                },
+                "groupId": {
+                  "type": "number",
+                  "example": 1
+                },
+                "limit": {
+                  "type": "number",
+                  "example": 10
+                },
+                "periods": {
+                  "type": "array",
+                  "example": [
+                    1,
+                    2,
+                    3
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "weeks": {
+                  "type": "array",
+                  "example": [
+                    1,
+                    2,
+                    3
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "day": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     },
     "/gateway/api/course-service/v1/schedule/enroll": {
       "post": {
         "tags": [
-          "schedule"
+          "Schedule"
         ],
-        "description": "This endpoint return a list of all course",
-        "parameters": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "studentId": {
+                  "type": "string",
+                  "example": ""
+                },
+                "courseCode": {
+                  "type": "number",
+                  "example": 504070
+                },
+                "semesterAlias": {
+                  "type": "string",
+                  "example": ""
+                },
+                "groupId": {
+                  "type": "number",
+                  "example": 1
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     },
     "/gateway/api/course-service/v1/schedule/delete-enroll": {
       "delete": {
         "tags": [
-          "schedule"
+          "Schedule"
         ],
-        "description": "This endpoint return a list of all course",
-        "parameters": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "studentId": {
+                  "type": "string",
+                  "example": ""
+                },
+                "courseCode": {
+                  "type": "number",
+                  "example": 504070
+                },
+                "semesterAlias": {
+                  "type": "string",
+                  "example": ""
+                },
+                "groupId": {
+                  "type": "number",
+                  "example": 1
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     },
     "/gateway/api/course-service/v1/schedule/enrollment/all": {
       "post": {
         "tags": [
-          "schedule"
+          "Schedule"
         ],
-        "description": "This endpoint return a list of all course",
-        "parameters": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "studentId": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     },
     "/gateway/api/course-service/v1/schedule/enrollment/semester": {
       "post": {
         "tags": [
-          "schedule"
+          "Schedule"
         ],
-        "description": "This endpoint return a list of all course",
-        "parameters": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "studentId": {
+                  "type": "string",
+                  "example": ""
+                },
+                "semesterAlias": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     },
@@ -578,7 +785,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/student/student/get-all": {
+    "/gateway/api/client-service/v1/student/get-all": {
       "get": {
         "tags": [
           "Student"
@@ -629,7 +836,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/student/{id_student}": {
+    "/gateway/api/client-service/v1/student/update": {
       "patch": {
         "tags": [
           "Student"
@@ -637,10 +844,29 @@
         "description": "",
         "parameters": [
           {
-            "name": "id_student",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id_student": {
+                  "type": "string",
+                  "example": "User Id"
+                },
+                "fullName": {
+                  "type": "string",
+                  "example": "name"
+                },
+                "address": {
+                  "type": "string",
+                  "example": "19 NHT, TP, Q7"
+                },
+                "phoneNumber": {
+                  "type": "string",
+                  "example": "0909123123"
+                }
+              }
+            }
           }
         ],
         "responses": {}
@@ -702,23 +928,6 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/class/{id_class}": {
-      "patch": {
-        "tags": [
-          "Class"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id_class",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {}
-      }
-    },
     "/gateway/api/client-service/v1/user/get/{id_user}": {
       "get": {
         "tags": [
@@ -770,11 +979,11 @@
                 },
                 "id_faculty": {
                   "type": "string",
-                  "example": "faculty"
+                  "example": "faculty id"
                 },
                 "role": {
                   "type": "string",
-                  "example": "Student, FACULTY IT, ADMIN"
+                  "example": "FACULTY IT"
                 }
               }
             }
@@ -783,7 +992,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/user/{id_user}": {
+    "/gateway/api/client-service/v1/user/update": {
       "patch": {
         "tags": [
           "User"
@@ -791,10 +1000,29 @@
         "description": "",
         "parameters": [
           {
-            "name": "id_user",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id_user": {
+                  "type": "string",
+                  "example": "User id"
+                },
+                "fullName": {
+                  "type": "string",
+                  "example": "name"
+                },
+                "address": {
+                  "type": "string",
+                  "example": "19 NHT, TP, Q7"
+                },
+                "phoneNumber": {
+                  "type": "string",
+                  "example": "0909123123"
+                }
+              }
+            }
           }
         ],
         "responses": {}
@@ -898,7 +1126,30 @@
           "Score"
         ],
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id_student": {
+                  "type": "string",
+                  "example": ""
+                },
+                "id_course": {
+                  "type": "string",
+                  "example": ""
+                },
+                "semester": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     },
@@ -908,7 +1159,38 @@
           "Score"
         ],
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": ""
+                },
+                "attendance_score": {
+                  "type": "number",
+                  "example": 10
+                },
+                "assignment": {
+                  "type": "number",
+                  "example": 10
+                },
+                "mid_tern": {
+                  "type": "number",
+                  "example": 10
+                },
+                "final_tern": {
+                  "type": "number",
+                  "example": 10
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     }
