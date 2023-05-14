@@ -751,7 +751,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/test/upload/{id_user}": {
+    "/gateway/api/user-service/v1/test/upload/{id_user}": {
       "post": {
         "tags": [
           "Test"
@@ -768,7 +768,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/student/get/{id_student}": {
+    "/gateway/api/user-service/v1/student/get/{id_student}": {
       "get": {
         "tags": [
           "Student"
@@ -785,7 +785,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/student/get-all": {
+    "/gateway/api/user-service/v1/student/get-all": {
       "get": {
         "tags": [
           "Student"
@@ -795,7 +795,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/student/new": {
+    "/gateway/api/user-service/v1/student/new": {
       "post": {
         "tags": [
           "Student"
@@ -836,7 +836,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/student/update": {
+    "/gateway/api/user-service/v1/student/update": {
       "patch": {
         "tags": [
           "Student"
@@ -872,7 +872,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/class/get/{id_class}": {
+    "/gateway/api/user-service/v1/class/get/{id_class}": {
       "get": {
         "tags": [
           "Class"
@@ -889,7 +889,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/class/new": {
+    "/gateway/api/user-service/v1/class/new": {
       "post": {
         "tags": [
           "Class"
@@ -918,7 +918,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/class/get-all": {
+    "/gateway/api/user-service/v1/class/get-all": {
       "get": {
         "tags": [
           "Class"
@@ -928,7 +928,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/user/get/{id_user}": {
+    "/gateway/api/user-service/v1/user/get/{id_user}": {
       "get": {
         "tags": [
           "User"
@@ -945,7 +945,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/user/get-all": {
+    "/gateway/api/user-service/v1/user/get-all": {
       "get": {
         "tags": [
           "User"
@@ -955,7 +955,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/user/new": {
+    "/gateway/api/user-service/v1/user/new": {
       "post": {
         "tags": [
           "User"
@@ -992,7 +992,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/user/update": {
+    "/gateway/api/user-service/v1/user/update": {
       "patch": {
         "tags": [
           "User"
@@ -1028,7 +1028,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/faculty/get/{id_faculty}": {
+    "/gateway/api/user-service/v1/faculty/get/{id_faculty}": {
       "get": {
         "tags": [
           "Faculty"
@@ -1045,7 +1045,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/faculty/get-all": {
+    "/gateway/api/user-service/v1/faculty/get-all": {
       "get": {
         "tags": [
           "Faculty"
@@ -1055,7 +1055,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/faculty/new": {
+    "/gateway/api/user-service/v1/faculty/new": {
       "post": {
         "tags": [
           "Faculty"
@@ -1080,7 +1080,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/score/get/{id_student}": {
+    "/gateway/api/user-service/v1/score/get/{id_student}": {
       "get": {
         "tags": [
           "Score"
@@ -1097,7 +1097,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/score/get/{id_student}/{id_course}": {
+    "/gateway/api/user-service/v1/score/get/{id_student}/{id_course}": {
       "get": {
         "tags": [
           "Score"
@@ -1120,7 +1120,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/score/new": {
+    "/gateway/api/user-service/v1/score/new": {
       "post": {
         "tags": [
           "Score"
@@ -1153,7 +1153,7 @@
         "responses": {}
       }
     },
-    "/gateway/api/client-service/v1/score/update-score": {
+    "/gateway/api/user-service/v1/score/update-score": {
       "patch": {
         "tags": [
           "Score"
