@@ -5,7 +5,7 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "192.168.170.87:3004",
+  "host": "172.17.12.62:3004",
   "basePath": "/",
   "schemes": [
     "http"
