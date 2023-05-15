@@ -133,13 +133,9 @@ router.post("/api/course-service/v1/course/new", authentication, async (req, res
         if (!id_faculty) {
             return jsonResponse({ req, res }).json({ message: `Faculty Id is required!` });
         }
-<<<<<<< HEAD
         const facultyQuery = await axios.get(
             `${process.env.ClIENT_SERVICE}/api/user-service/v1/faculty/get/${id_faculty}`
         );
-=======
-        const facultyQuery = await axios.get(`${process.env.ClIENT_SERVICE}/api/user-service/v1/faculty/get/${id_faculty}`);
->>>>>>> bfc3ea7a32b80b3c483396c789560bd1bd211ab5
 
         courseService(req, res, next);
     } catch (error) {
@@ -203,13 +199,9 @@ router.post("/api/course-service/v1/academic/new", async (req, res, next) => {
         if (!id_student) {
             return jsonResponse({ req, res }).json({ message: `Student Id is required!` });
         }
-<<<<<<< HEAD
         const studentQuery = await axios.get(
             `${process.env.ClIENT_SERVICE}/api/user-service/v1/student/get/${id_student}`
         );
-=======
-        const studentQuery = await axios.get(`${process.env.ClIENT_SERVICE}/api/user-service/v1/student/get/${id_student}`);
->>>>>>> bfc3ea7a32b80b3c483396c789560bd1bd211ab5
 
         courseService(req, res, next);
     } catch (error) {
